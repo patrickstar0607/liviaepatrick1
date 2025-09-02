@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Bem-vinda, Lívia!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    h1 {
+      margin-top: 60px;
+      font-size: 3em;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+      animation: fadeIn 2s ease;
+    }
+    .btn {
+      margin-top: 40px;
+      padding: 15px 40px;
+      font-size: 1.5em;
+      background: #ff4d6d;
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #e63950;
+      transform: scale(1.05);
+    }
+    #message {
+      display: none;
+      font-size: 2.5em;
+      margin-top: 30px;
+      animation: fadeIn 2s ease forwards;
+    }
+    #carousel {
+      display: none;
+      margin: 50px auto;
+      width: 80%;
+      max-width: 600px;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+    #carousel img {
+      width: 100%;
+      display: none;
+    }
+    #carousel img.active {
+      display: block;
+      animation: fadeIn 1.5s ease;
+    }
+    iframe {
+      display: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Bem-vinda, Lívia!</h1>
+  <button class="btn" onclick="showLove()">nós</button>
+
+  <div id="message">Eu te amo! ❤️</div>
+
+  <div id="carousel">
+    <img src="foto1.jpg" class="active" alt="Foto 1">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+    <img src="foto4.jpg" alt="Foto 4">
+    <img src="foto5.jpg" alt="Foto 5">
+  </div>
+
+  <iframe id="music" width="0" height="0" 
+    src="https://www.youtube.com/embed/qUD2GxTeVcI?autoplay=1"
+    frameborder="0" allow="autoplay"></iframe>
+
+  <script>
+    function showLove() {
+      // mostra mensagem
+      document.getElementById('message').style.display = 'block';
+      
+      // mostra carrossel
+      document.getElementById('carousel').style.display = 'block';
+
+      // toca música
+      document.getElementById('music').style.display = 'block';
+
+      // inicia carrossel
+      let slides = document.querySelectorAll('#carousel img');
+      let index = 0;
+      setInterval(() => {
+        slides[index].classList.remove('active');
+        index = (index + 1) % slides.length;
+        slides[index].classList.add('active');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
